@@ -1,12 +1,15 @@
-# MyGpack
+# MyGpack 
+### X Deploy Edition
 
-U-X MyGpack Edition
 
 <p align="center">
-
-   <a href = "https://heroku.com/deploy?template=https://github.com/code-pms/Deploy"><img src="https://www.herokucdn.com/deploy/button.svg" alt="MyGpac"> </a>
+   <a href = "https://heroku.com/deploy?template=https://github.com/code-pms/DeployScript"><img src="https://www.herokucdn.com/deploy/button.svg" alt="MyGpac"> </a>
 </p>
 <br>
 
-# Credits
+## Credits
 - @midnightmadwalk
+- @DeletedUser420
+
+## Based on:
+https://github.com/midnightmadwalk/MyGpack
