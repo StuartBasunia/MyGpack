@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# error precaution.
+set -e
+# default unzip folder.
+DIR='app/main'
+mkdir -p "$DIR"
+
+
+_get_ziplink () {
+    local regex
+    regex='(https?)://github.com/.+/.+'
+    if [[ $UPSTREAM_REPO =~ $regex ]]
+    then 
+        echo "${UPSTREAM_REPO}/archive/alpha.zip"
+    else
+        echo "aHR0cHM6Ly9naXRodWIuY29tL2NvZGUtcmdiL1VTRVJHRS1YL2FyY2hpdmUvYWxwaGEuemlw" | base64 -d
+    fi
+}
+
+
+_startbot () {
+    cd $DIR/*
+    sleep 3
+    echo "  --- >><< --- Starting [X] --- >><< ---"
+    bash run
+    sleep 5
+}
+
+
+_setup_repo () {
+    local zippath
+    zippath="app/userge-x.zip"
+    echo "  Fetching update from Upstream Repo..."
+    wget -q $(_get_ziplink) -O "$zippath"
+    echo "  Unpacking Data ..."
+    unzip -qq "$zippath" -d "$DIR"
+    echo "Done"
+    echo "  Cleaning ..."
+    rm -rf "$zippath"  
+    sleep 5
+    _startbot
+}
+
+
+_setup_repo
